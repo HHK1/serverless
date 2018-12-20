@@ -119,6 +119,8 @@ class ServerlessOfflineDynamoDBStreams {
     const dynamodbStreamsClient = this.getDynamoDBStreamsClient();
     const tableName = this.getTableName(tableEvent);
 
+    this.serverless.cli.log(`Creating stream with ${dynamodbClient}, ${dynamodbStreamsClient}, table name: ${tableName}`);
+
     const streamARN = await fromCallback(cb =>
       dynamodbClient.describeTable(
         {
